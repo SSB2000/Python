@@ -1,53 +1,25 @@
-# Parent's class
 class Employee:
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, firstName, lastName, pay = 0):
+        self.firstName = firstName
+        self.lastName = lastName
+        self.pay = pay
 
+    # Equal(==)
+    def __eq__(self, other):
+        return self.firstName == other.firstName and self.lastName == other.lastName
 
-# sub/child class
-class Developer(Employee):
+    # Compare(<) lt = less than
+    def __lt__(self, other):
+        return self.pay < other.pay
 
-    def __init__(self, name, prog_lang):
-        super().__init__(name)
-        self.prog_lang = prog_lang
+    # Compare (>) gt = greater than
+    def __gt__(self, other):
+        return self.pay > other.pay
 
+emp_01 = Employee('Shubham', 'Bohra', 10)
+emp_02 = Employee('Shubham', 'Bohra', 12)
 
-class Manger(Employee):
-
-    def __init__(self, name, employees = None):
-        super().__init__(name)
-        if employees is None:
-            self.employees = []
-        else:
-            self.employees = employees
-
-    def add_employee(self, employee):
-        if employee not in self.employees:
-            self.employees.append(employee)
-        else:
-            pass
-
-    def remove_employee(self, employee):
-        if employee in self.employees:
-            self.employees.remove(employee)
-        else:
-            pass
-
-    def print_employees(self):
-        print('Employee List')
-        for employee in self.employees:
-            print(employee.name)
-        
-dev_01 = Developer('Shubham', 'Python')
-dev_02 = Developer('Ankit', 'Java')
-
-manager_01 = Manger('Ashish', [dev_01, dev_02])
-manager_01.print_employees()
-
-dev_03 = Developer('Aditya', 'Apex')
-manager_01.add_employee(dev_03)
-manager_01.print_employees()
-
-manager_01.remove_employee(dev_01)
-manager_01.print_employees()
+print(emp_01 == emp_02) # emp_01.__eq__(emp_02)
+print(emp_01 < emp_02) # emp_01.__lt__(emp_02)
+print(emp_01 > emp_02)
