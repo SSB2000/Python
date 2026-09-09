@@ -3,6 +3,7 @@
 class Employee:
     pass
 
+# Basic object/instance
 emp_01 = Employee()
 emp_02 = Employee()
 
