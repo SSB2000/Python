@@ -1,25 +1,20 @@
+from functools import total_ordering
+@total_ordering
 class Employee:
 
-    def __init__(self, firstName, lastName, pay = 0):
-        self.firstName = firstName
-        self.lastName = lastName
+    def __init__(self, name, pay):
+        self.name = name
         self.pay = pay
 
-    # Equal(==)
     def __eq__(self, other):
-        return self.firstName == other.firstName and self.lastName == other.lastName
+        return self.name == other.name 
 
-    # Compare(<) lt = less than
     def __lt__(self, other):
         return self.pay < other.pay
+    
+emp_01 = Employee('Shubham', 10)
+emp_02 = Employee('Shubham', 20)
 
-    # Compare (>) gt = greater than
-    def __gt__(self, other):
-        return self.pay > other.pay
-
-emp_01 = Employee('Shubham', 'Bohra', 10)
-emp_02 = Employee('Shubham', 'Bohra', 12)
-
-print(emp_01 == emp_02) # emp_01.__eq__(emp_02)
-print(emp_01 < emp_02) # emp_01.__lt__(emp_02)
+print(emp_01 == emp_02)
+print(emp_01 < emp_02)
 print(emp_01 > emp_02)
